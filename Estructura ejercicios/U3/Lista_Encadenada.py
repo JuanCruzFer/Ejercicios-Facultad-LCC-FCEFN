@@ -26,7 +26,7 @@ class ListaEncadenada:
         else:
             self.__cabeza = nuevo
         self.__cant += 1
-    def suprimir(self,posicion:int):
+    def suprimir(self, posicion:int):
         if 1 <= posicion <= self.__cant:
             if not self.vacia():
                 posicion -= 1
@@ -42,7 +42,6 @@ class ListaEncadenada:
                 else:
                     self.__cabeza = actual.getSig()
                 self.__cant-=1
-                return actual.getElem()
             else:
                 print("La lista esta vacia")
         else:
@@ -71,24 +70,37 @@ class ListaEncadenada:
                 return
             actual = actual.getSig()
         self.insertar(contacto, tel)
+        print(f"{actual}")
         print("\nContacto agregado:", contacto, "Numero de Telefono: ", tel)
 
+    def borrar_contacto(self):
+        nombre = input("Ingrese El nombre del contacto a eliminar: ")
+        if self.buscar(nombre):
+            if not self.vacia():
+                anterior = None
+                actual = self.__cabeza
+                while actual != None and actual.getElem() != nombre:
+                    anterior = actual
+                    actual = anterior.getSig()
+                if anterior:
+                    anterior.setSig(actual.getSig())
+                else:
+                    self.__cabeza = actual.getSig()
+                self.__cant-=1
+                print("El contacto fue eliminado de la agenda")
+            else:
+                print("La lista esta vacia")
+        else:
+            print("indice fuera de rango")
+
+
 LE = ListaEncadenada()
-"""LE.insertar(1)
-LE.insertar(2)
-LE.insertar(4)
-LE.insertar(4)
-LE.insertar(0)
-LE.insertar(10)
-LE.insertar(7)
-LE.recorrer()"""
 op = int(input("\nIngrese una opcion:\n1- Agendar Contacto\n2- Eliminar Contacto\n3- Buscar Contacto\n4- Ver los Contactos\n0- Salir\n"))
 while op != 0:
     if op == 1:
         LE.agregarContacto(input("Ingrese Nombre del Contacto: "),input("\nIngrese el Telefono: "))
     elif op == 2:
-        sup = input("Ingrese el contacto a eliminar: ")
-        print(f"\nEl contacto {sup} fue eliminado")
+        LE.borrar_contacto()
     elif op == 3:
         LE.buscar(input("\nIngrese el contacto a buscar: "))
     elif op == 4:
