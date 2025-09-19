@@ -73,8 +73,6 @@ class ListaEncadenada:
         self.insertar(contacto, tel)
         print("\nContacto agregado:", contacto, "Numero de Telefono: ", tel)
 
-
-
 LE = ListaEncadenada()
 """LE.insertar(1)
 LE.insertar(2)
