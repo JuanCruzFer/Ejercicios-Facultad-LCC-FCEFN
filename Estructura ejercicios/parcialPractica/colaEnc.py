@@ -43,7 +43,7 @@ class Cola:
         acum_t = 0
         while reloj < simulacion:
             num = random.random()
-            if 0 <= num and num <= 1/3:
+            if num <= 1/3:
                 if cajero_1 == 0 or cajero_2 == 0:
                     cajero_elegido = random.choice([i for i, x in enumerate([cajero_1, cajero_2]) if x == 0])
                     cajeros[cajero_elegido].insertar(reloj)
