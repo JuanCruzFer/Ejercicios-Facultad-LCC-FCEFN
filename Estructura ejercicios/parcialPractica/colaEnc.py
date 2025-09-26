@@ -32,7 +32,7 @@ class Cola:
             self.__cant -= 1
             return elem.getTiempo()
     
-    def simularPensiones(self, simulacion, cajeros):
+    def simularPensiones(self, simulacion):
         reloj = 0
         cajero_1 = 0
         cajero_2 = 0
@@ -45,11 +45,12 @@ class Cola:
             num = random.random()
             if num <= 1/3:
                 if cajero_1 == 0 or cajero_2 == 0:
-                    cajero_elegido = random.choice([i for i, x in enumerate([cajero_1, cajero_2]) if x == 0])
-                    cajeros[cajero_elegido].insertar(reloj)
+                    self.insertar(reloj)
                 else:
-                    cajero_menos_cola = min(cajeros, key=lambda c: c.getCant())
-                    cajero_menos_cola.insertar(reloj)
+                    if cajero_1 < cajero_2:
+                        self.insertar(reloj)
+                    elif cajero_2 < cajero_1:
+                        self.insertar(reloj)
             if cajero_1 == 0 and not cajeros[0].vacia():
                 pensionado1 = cajeros[0].suprimir()
                 t_espera = reloj - pensionado1
@@ -76,6 +77,5 @@ class Cola:
 
 if __name__ == '__main__':
     cola = Cola()
-    cajeros = [Cola() for x in range(2)]
-    cola.simularPensiones(300, cajeros)
+    cola.simularPensiones(300)
 
