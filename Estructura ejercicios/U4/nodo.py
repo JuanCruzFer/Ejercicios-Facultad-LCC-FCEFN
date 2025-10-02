@@ -3,7 +3,7 @@ class Nodo:
     __izq: None
     __der: None
 
-    def __init__(self,elem):
+    def __init__(self,elem: int):
         self.__elem = elem
         self.__izq = None
         self.__der = None
