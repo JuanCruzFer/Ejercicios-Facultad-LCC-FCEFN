@@ -14,19 +14,18 @@ class Arbol:
         else:
             self._insertar(self.__raiz, value)
     def _insertar(self, nodo, elemento):
-        if self.__raiz == None:
-            self.__raiz = Nodo(elemento)
-        
-        if elemento < self.__raiz.getElem():
-            if nodo.getIzq() == None:
+        if elemento < nodo.getElem():
+            if nodo.getIzq() is None:
                 nodo.setIzq(Nodo(elemento))
             else:
                 self._insertar(nodo.getIzq(), elemento)
-        else:
-            if nodo.getDer() == None:
+        elif elemento > nodo.getElem():
+            if nodo.getDer() is None:
                 nodo.setDer(Nodo(elemento))
             else:
                 self._insertar(nodo.getDer(), elemento)
+        elif elemento == nodo.getElem():
+            return print("El elemento ya existe")
 
     def grado(self,nodo : Nodo):
         grado = 0
@@ -161,3 +160,72 @@ class Arbol:
                     camino.append(1)
                     nodo_actual = nodo_actual.getDer()
         return camino
+
+    def padre_hermano(self, valor):
+        return self._padre_hermano(valor, self.__raiz)
+    def _padre_hermano(self, valor, nodo):
+        if nodo is None:
+            return None, None
+        elif valor == nodo.getElem():
+            print("\nEl valor es el mismo que la raíz")
+            return None, None
+        elif nodo.getIzq() and nodo.getIzq().getElem() == valor:
+            padre = nodo.getElem()
+            hermano = None
+            if nodo.getDer():
+                hermano = nodo.getDer().getElem()
+            return hermano, padre
+
+        elif nodo.getDer() and nodo.getDer().getElem() == valor:
+            padre = nodo.getElem()
+            hermano = None
+            if nodo.getIzq():
+                hermano = nodo.getIzq().getElem()
+            return hermano, padre
+        elif valor < nodo.getElem():
+            return self._padre_hermano(valor, nodo.getIzq())
+        else:
+            return self._padre_hermano(valor, nodo.getDer())
+            
+            
+if __name__ == '__main__':
+    arbol = Arbol()
+    op = input("\nIngrese una opcion: ")
+    while op != "0":
+        if op == "1":
+            nodo = int(input(f"\nIngrese un nodo para insertar: "))
+            arbol.insertar(nodo)
+        elif op == "2":
+            try:
+                valor = int(input(f"\nIngrese un valor para buscar su padre y hermano: "))
+                hermano, padre = arbol.padre_hermano(valor)
+                if hermano:
+                    print(f"\nEl hermano de {valor} es {hermano}")
+                else:
+                    print(f"\nEl hermano de {valor} no existe")
+                if padre:
+                    print(f"\nEl padre de {valor} es {padre}")
+                else:
+                    print(f"\nEl padre de {valor} no existe")
+            except:
+                print("\nValor no encontrado")
+        op = input("\nIngrese una opcion: ")
+
+"""
+1
+10
+1
+8
+1
+9
+1
+7
+1
+12
+1
+11
+1
+13
+"""
+
+    
