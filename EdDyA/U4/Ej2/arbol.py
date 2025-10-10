@@ -110,16 +110,17 @@ class Arbol:
         else:
             nivel+=1
         return nivel
+    
     def altura(self):
-        return self._altura(self.__raiz,0)
-
-    def _altura(self, nodo : Nodo, altura : int):
-        if nodo:
-            if altura < self.nivel(nodo.getElem()):
-                altura +=1
-            altura = self._altura(nodo.getIzq(),altura)
-            altura = self._altura(nodo.getDer(),altura)
-        return altura
+        return self._altura(self.__raiz)
+    
+    def _altura(self, nodo):
+        if nodo == None:
+            return 0
+        else:
+            altura_izq = self._altura(nodo.getIzq())
+            altura_der = self._altura(nodo.getDer())
+            return max(altura_izq, altura_der) + 1
 
     def PreOrden(self):
         self._PreOrden(self.__raiz)
@@ -186,6 +187,49 @@ class Arbol:
             return self._padre_hermano(valor, nodo.getIzq())
         else:
             return self._padre_hermano(valor, nodo.getDer())
+    
+    def cantidad(self):
+        return self._cantidad(self.__raiz)
+    
+    def _cantidad(self, nodo):
+        if nodo is None:
+            return 0
+        else:
+            return self._cantidad(nodo.getIzq()) + self._cantidad(nodo.getDer()) + 1
+    def buscar(self, valor):
+        return self._buscar(self.__raiz, valor)
+    def _buscar(self, nodo, valor):
+        if nodo == None:
+            return None
+        else:
+            if valor == nodo.getElem():
+                return nodo
+            elif valor < nodo.getElem():
+                return self._buscar(nodo.getIzq(), valor)
+            else:
+                return self._buscar(nodo.getDer(), valor)
+    def sucesor(self, valor):
+        return self._sucesor(self.__raiz, valor)
+    def _sucesor(self, nodo, valor):
+        if nodo == None:
+            return 0
+        else:
+            nodo_encotrado = self.buscar(valor)
+            if nodo_encotrado == None:
+                return 0
+            hijo_izq = nodo_encotrado.getIzq()
+            hijo_der = nodo_encotrado.getDer()
+            if hijo_izq == None and hijo_der == None:
+                print(f"\nEl valor {valor} no tiene sucesores, es una hoja")
+            else:
+                if hijo_izq != None:
+                    print(f"\nEl sucesor izquierdo de {valor} es {hijo_izq.getElem()}")
+                else:
+                    print(f"\nEl sucesor izquierdo de {valor} no existe")
+                if hijo_der != None:
+                    print(f"\nEl sucesor derecho de {valor} es {hijo_der.getElem()}")
+                else:
+                    print(f"\nEl sucesor derecho de {valor} no existe")
             
             
 if __name__ == '__main__':
@@ -209,6 +253,21 @@ if __name__ == '__main__':
                     print(f"\nEl padre de {valor} no existe")
             except:
                 print("\nValor no encontrado")
+        elif op == "3":
+            try:
+                print(f"\nCantidad de nodos: {arbol.cantidad()}")
+            except:
+                print("\nNo hay nodos en el arbol")
+        elif op == "4":
+            try:
+                print(f"\nAltura del arbol: {arbol.altura()}")
+            except:
+                print("\nNo hay nodos en el arbol")
+        elif op == "5":
+            try:
+                arbol.sucesor(int(input(f"\nIngrese un valor de un nodo para buscar su sucesor: ")))
+            except:
+                print("\nValor no encontrado")
         op = input("\nIngrese una opcion: ")
 
 """
@@ -226,6 +285,8 @@ if __name__ == '__main__':
 11
 1
 13
+5
+10
 """
 
     
