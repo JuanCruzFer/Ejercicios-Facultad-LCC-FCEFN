@@ -1,9 +1,13 @@
+# pyrefly: ignore  # missing-import
 from gestor_cliente import *
+# pyrefly: ignore  # missing-import
 from gestor_movimiento import *
 if __name__=='__main__':
+  # pyrefly: ignore  # unknown-name
   GC = gestor_cliente() 
   GC.cargar_cliente_desde_csv()
   GC.mostrar()
+  # pyrefly: ignore  # unknown-name
   GM = gestor_movimiento() 
   GM.cargar_movimiento_desde_csv()
   GM.mostrar()

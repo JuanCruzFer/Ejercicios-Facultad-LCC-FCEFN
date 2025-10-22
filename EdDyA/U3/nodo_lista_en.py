@@ -11,8 +11,10 @@ class Nodo:
     def setElem(self,elem)->None:
         self.__elem = elem
     def getTel(self)-> None:
+        # pyrefly: ignore  # bad-return
         return self.__tel
     def getSig(self)->object:
         return self.__sig
     def setSig(self,sig : object)->None:
+        # pyrefly: ignore  # bad-assignment
         self.__sig = sig

@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from claseCabaña import Cabaña
 import numpy as np
 import csv

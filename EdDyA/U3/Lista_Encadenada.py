@@ -1,5 +1,6 @@
 import re
 from turtle import teleport
+# pyrefly: ignore  # missing-import
 from nodo_lista_en import Nodo
 class ListaEncadenada:
     __cabeza : Nodo
@@ -83,8 +84,10 @@ class ListaEncadenada:
                     anterior = actual
                     actual = anterior.getSig()
                 if anterior:
+                    # pyrefly: ignore  # missing-attribute
                     anterior.setSig(actual.getSig())
                 else:
+                    # pyrefly: ignore  # missing-attribute
                     self.__cabeza = actual.getSig()
                 self.__cant-=1
                 print("El contacto fue eliminado de la agenda")

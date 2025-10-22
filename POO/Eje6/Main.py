@@ -1,5 +1,8 @@
+# pyrefly: ignore  # missing-import
 from claseCuenta import Cuenta
+# pyrefly: ignore  # missing-import
 from GestorCuenta import gestorCuenta
+# pyrefly: ignore  # missing-import
 from GestorTransaccion import gestorTransaccion
 
 if __name__=='__main__':
@@ -27,6 +30,7 @@ if __name__=='__main__':
             nuevo_porcentaje=float(input("\nIngrese nuevo porcentaje: "))
             GC.nuevoPor(nuevo_porcentaje)
         elif op==3:
+            # pyrefly: ignore  # unbound-name
             GC.actualizarSaldoPorRendimiento(nuevo_porcentaje)
         elif op==4:
             cvu=input("\nIngrese CVU: ")

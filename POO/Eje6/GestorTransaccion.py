@@ -1,4 +1,5 @@
 import csv
+# pyrefly: ignore  # missing-import
 from claseTransaccion import Transaccion
 
 class gestorTransaccion:

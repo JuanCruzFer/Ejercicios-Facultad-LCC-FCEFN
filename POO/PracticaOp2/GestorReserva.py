@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from claseReserva import Reserva
 import csv
 

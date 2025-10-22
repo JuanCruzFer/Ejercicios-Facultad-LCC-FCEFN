@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from clase_cliente import *
 import csv
 
@@ -11,6 +12,7 @@ class gestor_cliente:
     with open("ClientesAbril2024.csv", newline='', encoding='utf-8') as archivo_csv:
       reader = csv.reader(archivo_csv,delimiter = ';')
       for fila in reader:
+        # pyrefly: ignore  # unknown-name
         cliente = Cliente(*fila)
         self.__lista.append(cliente)
       print("\nCLIENTES CARGADOS\n")

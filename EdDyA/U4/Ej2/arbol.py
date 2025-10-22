@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from nodo import Nodo
 
 class Arbol:
@@ -128,7 +129,9 @@ class Arbol:
     def _PreOrden(self,nodo:Nodo):
         if nodo:
             print(nodo.getElem())
+            # pyrefly: ignore  # missing-attribute
             self._inOrden(nodo.getIzq())
+            # pyrefly: ignore  # missing-attribute
             self._inOrden(nodo.getDer())
 
     def PostOrden(self):
@@ -136,7 +139,9 @@ class Arbol:
 
     def _PostOrden(self,nodo:Nodo):
         if nodo:
+            # pyrefly: ignore  # missing-attribute
             self._inOrden(nodo.getIzq())
+            # pyrefly: ignore  # missing-attribute
             self._inOrden(nodo.getDer())
             print(nodo.getElem())
 

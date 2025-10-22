@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from Eje5 import ColaEnc
 import random
 

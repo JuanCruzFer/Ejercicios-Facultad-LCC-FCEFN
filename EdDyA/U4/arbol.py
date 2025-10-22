@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from nodo import Nodo
 
 class Arbol:
@@ -67,6 +68,7 @@ class Arbol:
             self._preorden(nodo.getDer())
     
     def hijo(self, hijo: Nodo, padre: Nodo):
+        # pyrefly: ignore  # missing-attribute
         nodo_p = self.buscar(padre)
         es_hijo = False
         if nodo_p == None:
@@ -78,6 +80,7 @@ class Arbol:
         return es_hijo
     
     def hoja(self, valor:int):
+        # pyrefly: ignore  # missing-attribute
         nodo = self.buscar(valor)
         es_hoja = False
         if not nodo:
@@ -87,6 +90,7 @@ class Arbol:
         return es_hoja
     
     def padre(self, padre:int, hijo:int):
+        # pyrefly: ignore  # missing-attribute
         nodo_padre = self.buscar(padre)
         es_padre = False
         if nodo_padre == None:
@@ -128,7 +132,9 @@ class Arbol:
     def _PreOrden(self,nodo:Nodo):
         if nodo:
             print(nodo.getElem())
+            # pyrefly: ignore  # missing-attribute
             self._inOrden(nodo.getIzq())
+            # pyrefly: ignore  # missing-attribute
             self._inOrden(nodo.getDer())
 
     def PostOrden(self):
@@ -136,7 +142,9 @@ class Arbol:
 
     def _PostOrden(self,nodo:Nodo):
         if nodo:
+            # pyrefly: ignore  # missing-attribute
             self._inOrden(nodo.getIzq())
+            # pyrefly: ignore  # missing-attribute
             self._inOrden(nodo.getDer())
             print(nodo.getElem())
 
@@ -144,6 +152,7 @@ class Arbol:
         return self.__raiz
     def antecesor(self,x : int,z : int):
         es_antecesor = False
+        # pyrefly: ignore  # missing-attribute
         if self._buscar(self.buscar(x),z) != None:
             es_antecesor = True
         return es_antecesor
@@ -152,6 +161,7 @@ class Arbol:
         es_antecesor = self.antecesor(inicio, fin)
         camino = []
         if es_antecesor == True:
+            # pyrefly: ignore  # missing-attribute
             nodo_actual = self.buscar(inicio)
             while nodo_actual != None and nodo_actual.getElem() != fin:
                 if fin < nodo_actual.getElem():

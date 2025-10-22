@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from nodo import Nodo
 class PilaEncadenada:
     __cabeza : Nodo
@@ -35,6 +36,7 @@ class PilaEncadenada:
     def chequear_parentesis(self, expresion):
         for i , simbolo in enumerate(expresion, start = 1):
             if simbolo == '(':
+                # pyrefly: ignore  # bad-argument-type
                 self.insertar(simbolo)
             elif simbolo == ')':
                 if self.vacia():

@@ -1,4 +1,5 @@
 import csv
+# pyrefly: ignore  # missing-import
 from claseAlquiler import Alquiler
 
 class gestorAlquiler:

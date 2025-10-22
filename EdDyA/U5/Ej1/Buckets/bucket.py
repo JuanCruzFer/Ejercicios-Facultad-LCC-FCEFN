@@ -9,6 +9,7 @@ class Bucket:
         self.__cap_bucket = cap_bucket
         self.__tamaño = int(claves / cap_bucket + (claves / cap_bucket) * 0.2)
         self.__tabla = np.zeros((self.__tamaño, cap_bucket), dtype= object)
+        # pyrefly: ignore  # bad-assignment
         self.__contadores = np.zeros(self.__tamaño, dtype=int)
         self.__direccion_overflow = int(claves / cap_bucket)
         print(f"\nBucket creado con {self.__tamaño} elementos y {cap_bucket} buckets")

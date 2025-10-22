@@ -5,6 +5,7 @@ class PilaSecuencial:
     __lista: list
     __cantidad:int 
     def __init__(self,tamaño):
+        # pyrefly: ignore  # bad-assignment
         self.__lista = np.empty(tamaño,dtype=int)
         self.__tope = -1
         self.__tamaño = tamaño
@@ -47,6 +48,7 @@ class PilaEncadenada:
     __cabeza : Celda
     __cant : int
     def __init__(self):
+        # pyrefly: ignore  # bad-assignment
         self.__cabeza = None
         self.__cant = 0
     def insertar(self,elem:int):
@@ -57,12 +59,14 @@ class PilaEncadenada:
     def suprimir(self):
         self.__cant-=1
         borrado = self.__cabeza.getElem()
+        # pyrefly: ignore  # bad-assignment
         self.__cabeza = self.__cabeza.getSig()
         return borrado
     def vacia(self):
         return self.__cant == 0
     def recorrer(self):
         aux = self.__cabeza
+        # pyrefly: ignore  # bad-assignment
         while aux != None:
             print(aux.getElem())
             aux = aux.getSig()
@@ -72,6 +76,7 @@ class PilaEncadenada:
         return self.__cabeza.getElem()
     def grafico(self):
         aux= self.__cabeza
+        # pyrefly: ignore  # bad-assignment
         while aux!=None:
             print(aux.getElem())
             aux = aux.getSig()
@@ -82,6 +87,7 @@ if __name__ == '__main__':
     pilaS.insertar(2)
     pilaS.insertar(3)
     pilaS.insertar(4)
+    # pyrefly: ignore  # bad-argument-type
     pilaS.insertar("a")
     while pilaS.vacia() != True:
         pilaS.suprimir()

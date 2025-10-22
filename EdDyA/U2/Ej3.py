@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from Ejercicio_1 import PilaEncadenada
 import random
 

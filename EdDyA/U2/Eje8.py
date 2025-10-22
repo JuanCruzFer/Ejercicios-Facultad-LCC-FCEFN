@@ -29,9 +29,12 @@ class Cola:
     def insertar(self, tiempo):
         nuevo = Nodo(tiempo)
         if self.vacia():
+            # pyrefly: ignore  # bad-assignment
             self.__pr = nuevo
         else:
+            # pyrefly: ignore  # missing-attribute
             self.__ul.setSig(nuevo)
+        # pyrefly: ignore  # bad-assignment
         self.__ul = nuevo
         self.__cant += 1
     
@@ -41,8 +44,10 @@ class Cola:
             return 0
         else:
             elem = self.__pr
+            # pyrefly: ignore  # missing-attribute
             self.__pr = self.__pr.getSig()
             self.__cant -= 1
+            # pyrefly: ignore  # missing-attribute
             return elem.getTiempo()
     
     def simularBanco(self, ):
@@ -54,6 +59,7 @@ class Cola:
 
 
     if __name__ == "__main__":
+        # pyrefly: ignore  # unbound-name
         cajeros = [Cola() for _ in range(3)]
 
         

@@ -38,9 +38,11 @@ class ColaImpresion:
     def insertar(self, tiempo):
         nuevoTrabajo = Trabajo(tiempo)
         if self.__ul is None: #Cola vacia
+            # pyrefly: ignore  # bad-assignment
             self.__pr = nuevoTrabajo
         else:
             self.__ul.setSig(nuevoTrabajo)
+        # pyrefly: ignore  # bad-assignment
         self.__ul = nuevoTrabajo
         self.__cant += 1
     
@@ -49,6 +51,7 @@ class ColaImpresion:
             return None
         else:
             aux = self.__pr
+            # pyrefly: ignore  # missing-attribute
             self.__pr = self.__pr.getSig()
             self.__cant -= 1
             if self.__pr is None:
@@ -68,6 +71,7 @@ class ColaImpresion:
                 break
             else:
                 actual = self.suprimir()
+                # pyrefly: ignore  # missing-attribute
                 tiempoTrabajo = actual.getTiempo()
                 if tiempoTrabajo > 5:
                     self.insertar(tiempoTrabajo - 5)

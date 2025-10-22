@@ -1,4 +1,5 @@
 import random
+# pyrefly: ignore  # missing-import
 from Nodo import Nodo
 import numpy as np
 class HashEnc:
@@ -8,6 +9,7 @@ class HashEnc:
 
     def __init__(self, N = 100, M = 5):
         self.__tamaño = int(N / M)
+        # pyrefly: ignore  # bad-assignment
         self.__colisiones = np.zeros(self.__tamaño, dtype=int)
         self.__lista = np.ndarray(self.__tamaño, dtype=object)
     
@@ -51,6 +53,7 @@ class HashEnc:
             suma += self.__colisiones[i]
         return suma / self.__tamaño
     def cantidadColisiones(self):
+        # pyrefly: ignore  # missing-attribute
         return self.__colisiones.sum()
     
     def colicionesPorDireccion(self, direccion):

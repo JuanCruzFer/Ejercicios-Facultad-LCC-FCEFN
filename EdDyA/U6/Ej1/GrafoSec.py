@@ -43,6 +43,7 @@ class Grafo:
     def bea(self, s):
         d = [None] * self.__nodos
         cola = []
+        # pyrefly: ignore  # unsupported-operation
         d[s] = 0
         cola.append(s)
         while len(cola) > 0:

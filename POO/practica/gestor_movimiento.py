@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from clase_movimiento import *
 import numpy as np
 import csv
@@ -5,6 +6,7 @@ class gestor_movimiento:
   __lista: list
   
   def __init__(self):
+    # pyrefly: ignore  # bad-assignment
     self.__lista = np.array([],dtype='object')
     
   def cargar_movimiento_desde_csv(self):
@@ -12,7 +14,9 @@ class gestor_movimiento:
       reader = csv.reader(archivo_csv,delimiter=';')
       next(reader)
       for fila in reader:
+        # pyrefly: ignore  # unknown-name
         movi = Movimiento(*fila)
+        # pyrefly: ignore  # bad-assignment
         self.__lista = np.append(self.__lista,movi)
       print("\nMOVIMIENTOS CARGADOS\n")
       
@@ -46,5 +50,6 @@ class gestor_movimiento:
     return band
   
   def ordenar(self):
+    # pyrefly: ignore  # bad-assignment
     self.__lista = np.sort(self.__lista)
     print("MOVIMIENTOS ORDENADOS:\n")

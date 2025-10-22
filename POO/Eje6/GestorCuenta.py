@@ -1,5 +1,6 @@
 import csv
 import numpy as np
+# pyrefly: ignore  # missing-import
 from claseCuenta import Cuenta
 
 class gestorCuenta:

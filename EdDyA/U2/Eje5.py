@@ -8,6 +8,7 @@ class ColaSec:
     __elementos : int
     def __init__(self,max = 0):
         self.__max = max
+        # pyrefly: ignore  # bad-assignment
         self.__elementos = np.zeros(max, dtype=int)
         self.__pr = 0
         self.__ul = 0
@@ -18,6 +19,7 @@ class ColaSec:
     
     def insertar(self, elem):
         if self.__cant < self.__max:
+            # pyrefly: ignore  # unsupported-operation
             self.__elementos[self.__ul] = elem
             self.__ul = (self.__ul + 1) % self.__max
             self.__cant += 1
@@ -30,6 +32,7 @@ class ColaSec:
             print("Cola vacia")
             return 0
         else:
+            # pyrefly: ignore  # bad-index
             elem = self.__elementos[self.__pr]
             self.__pr = (self.__pr + 1) % self.__max
             self.__cant -= 1
@@ -39,6 +42,7 @@ class ColaSec:
     def recorrer(self):
         if not self.vacia():
             for i in range(self.__pr, self.__pr + self.__cant):
+                # pyrefly: ignore  # bad-index
                 print(self.__elementos[i])
     
 
@@ -90,7 +94,9 @@ class ColaEnc:
             return 0
         else:
             aux = self.__pr
+            # pyrefly: ignore  # missing-attribute
             elem = self.__pr.getElem()
+            # pyrefly: ignore  # missing-attribute
             self.__pr = self.__pr.getSig()
             self.__cant -= 1
 

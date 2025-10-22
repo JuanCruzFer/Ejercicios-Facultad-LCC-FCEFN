@@ -1,3 +1,4 @@
+# pyrefly: ignore  # missing-import
 from nodo import Nodo
 import random
 
@@ -18,6 +19,7 @@ class Cola:
         if self.vacia():
             self.__pr = nuevo
         else:
+            # pyrefly: ignore  # missing-attribute
             self.__ul.setSig(nuevo)
         self.__ul = nuevo
         self.__cant += 1
@@ -28,8 +30,10 @@ class Cola:
             return 0
         else:
             elem = self.__pr
+            # pyrefly: ignore  # missing-attribute
             self.__pr = self.__pr.getSig()
             self.__cant -= 1
+            # pyrefly: ignore  # missing-attribute
             return elem.getTiempo()
     
     def simularPensiones(self, simulacion):
@@ -51,14 +55,18 @@ class Cola:
                         self.insertar(reloj)
                     elif cajero_2 < cajero_1:
                         self.insertar(reloj)
+            # pyrefly: ignore  # unknown-name
             if cajero_1 == 0 and not cajeros[0].vacia():
+                # pyrefly: ignore  # unknown-name
                 pensionado1 = cajeros[0].suprimir()
                 t_espera = reloj - pensionado1
                 acum_t += t_espera
                 cont += 1
                 cont1 += 1
                 cajero_1 = 6
+            # pyrefly: ignore  # unknown-name
             if cajero_2 == 0 and not cajeros[1].vacia():
+                # pyrefly: ignore  # unknown-name
                 pensionado2 = cajeros[1].suprimir()
                 t_espera = reloj - pensionado2
                 acum_t += t_espera
