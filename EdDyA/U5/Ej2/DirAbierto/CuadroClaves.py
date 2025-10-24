@@ -83,6 +83,7 @@ class CuadroClaves:
         return encontrado  
     def mostrar(self):
         print(self.__tabla)
+
 if __name__ == '__main__':
     tabla = CuadroClaves(10)
     
