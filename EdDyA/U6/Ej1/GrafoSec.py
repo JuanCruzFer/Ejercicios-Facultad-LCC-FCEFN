@@ -16,9 +16,8 @@ class Grafo:
             raise ValueError("\nNodos Invalidos")
         self.__matriz[u, v] = 1
         print(f"\nNodos {u} y {v} relacionados")
-        if np.random.rand() < 0.5:
-            self.__matriz[v, u] = 1
-            print(f"\nNodos {v} y {u} relacionados")
+        self.__matriz[v, u] = 1
+        print(f"\nNodos {v} y {u} relacionados")
 
     def adyacentes(self, u):
         for v in range(self.__nodos):
@@ -57,7 +56,6 @@ class Grafo:
                     d[u] = d[v + 1]
                     cola.insertar(u)
 
-    
     def aciclico(self):
         band = True
         i = 0
@@ -68,11 +66,40 @@ class Grafo:
                 i += 1
         return band
 
+    def gradEnt(self, u):
+        cont = 0
+        for v in range(self.__nodos):
+            if self.__matriz[v, u] == 1:
+                cont += 1
+        print(f"El numero de aristas que llegan a {u} es {cont}")
 
+    def gradSal(self, u):
+        cont = 0
+        for v in range(self.__nodos):
+            if self.__matriz[u, v] == 1:
+                cont += 1
+        print(f"El numero de aristas que salen de {u} es {cont}")
 
+    def nodoFuente(self, u):
+        i = 0
+        while i < self.__nodos:
+            if self.__matriz[i, u] == 1:
+                print(f"El nodo {u} no es fuente")
+                return
+            i += 1
+        print(f"El nodo {u} es fuente")
+    
+    def nodoSum(self, u):
+        i = 0
+        while i < self.__nodos:
+            if self.__matriz[u, i] == 1:
+                print(f"El nodo {u} no es sumidero")
+                return
+            i += 1
+        print(f"El nodo {u} es sumidero")
 
     def mostrar(self):
-        print(f"\nMatriz de Adyacencia:")
+        print(f"Matriz de Adyacencia:")
         print(self.__matriz)
         
 if __name__ == "__main__":
@@ -87,6 +114,10 @@ if __name__ == "__main__":
         print("4. Conexo")
         print("5. Mostrar")
         print("6. Aciclico")
+        print("7. Grado Entrante")
+        print("8. Grado Saliente")
+        print("9. Nodo Fuente")
+        print("10. Nodo Sumidero")
         print("0. Salir")
         try:
             op = int(input("\nOpcion: "))
@@ -119,6 +150,18 @@ if __name__ == "__main__":
                     print("\nGrafo Aciclico")
                 else:
                     print("\nGrafo Aciclico")
+            elif op == 7:
+                nodo = int(input("\nIngrese nodo U: "))
+                grafo.gradEnt(nodo)
+            elif op ==8:
+                nodo = int(input("\nIngrese nodo U: "))
+                grafo.gradSal(nodo)
+            elif op == 9:
+                nodo = int(input("\nIngrese nodo U: "))
+                grafo.nodoFuente(nodo)
+            elif op == 10:
+                nodo = int(input("\nIngrese nodo U: "))
+                grafo.nodoSum(nodo)
             elif op == 0:
                 print("\nSaliendo...")
             else:
