@@ -1,5 +1,3 @@
-import re
-from turtle import teleport
 # pyrefly: ignore  # missing-import
 from nodo_lista_en import Nodo
 class ListaEncadenada:
